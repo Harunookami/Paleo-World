@@ -15,7 +15,7 @@ import java.util.UUID;
 public class DinoModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String nome;
@@ -28,4 +28,6 @@ public class DinoModel {
 
     private Double altura;
 
+    public DinoModel(Object o, String nome, String dieta, String periodo, Double comprimento, Double altura) {
+    }
 }

@@ -6,10 +6,7 @@ import DevRafac.Paleo_World_web.Services.DinoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -23,8 +20,10 @@ public class DinoController {
         this.dinoService = dinoService;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/cadastrar")
     public ResponseEntity<?> cadastrarDinossauro (@Validated @RequestBody DinoDTO dinoDTO) {
+        System.out.println(dinoDTO.nome());
         try {
             DinoModel cadastrarDino = dinoService.cadastrarDinossauro(dinoDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(cadastrarDino);
