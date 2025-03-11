@@ -20,11 +20,11 @@ public class DinoService {
       try {
           DinoModel dino = new DinoModel(
                   null,
-          dinoDTO.nome(),
-          dinoDTO.dieta(),
-          dinoDTO.periodo(),
-          dinoDTO.comprimento(),
-          dinoDTO.altura()
+                  dinoDTO.nome(),
+                  dinoDTO.periodo(),
+                  dinoDTO.dieta(),
+                  dinoDTO.comprimento(),
+                  dinoDTO.altura()
           );
 
           return dinoRepository.save(dino);
