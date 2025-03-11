@@ -30,7 +30,7 @@ public class DinoController {
             return ResponseEntity.status(HttpStatus.CREATED).body(cadastrarDino);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("erro", "Erro ao cadastrar dinossauro",
+                    .body(Map.of("erro", "Erro ao cadastrar espécie",
                             "detalhes", e.getMessage()));
         }
     }
