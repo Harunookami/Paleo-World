@@ -3,12 +3,48 @@ import { sequelize } from "../utils/database.ts";
 
 const { Dino, User } = sequelize.models
 
+const scenes = [
+    [
+        ['/images/game/grass3.svg', 'absolute top-[350px] right-[460px] w-[100px] scale-x-[-1]'],
+        ['/images/game/dino8.svg', 'absolute top-[200px] right-[230px] w-[270px] scale-x-[-1]'],
+        ['/images/game/grass3.svg', 'absolute top-[420px] right-[230px] w-[100px]'],
+    ], [
+        ['/images/game/bush3.svg', 'absolute top-[300px] right-[460px] w-[220px] scale-x-[-1]'],
+        ['/images/game/dino5.svg', 'absolute top-[200px] right-[230px] w-[270px] scale-x-[-1]'],
+        ['/images/game/bush3.svg', 'absolute top-[400px] right-[230px] w-[220px]'],
+    ], [
+        ['/images/game/grass1.svg', 'absolute top-[300px] right-[460px] w-[120px] scale-x-[-1]'],
+        ['/images/game/dino4.svg', 'absolute top-[200px] right-[230px] w-[270px] scale-x-[-1]'],
+        ['/images/game/grass1.svg', 'absolute top-[400px] right-[230px] w-[120px]'],
+    ], [
+        ['/images/game/grass1.svg', 'absolute top-[300px] right-[460px] w-[120px] scale-x-[-1]'],
+        ['/images/game/dino3.svg', 'absolute top-[200px] right-[230px] w-[270px] scale-x-[-1]'],
+        ['/images/game/grass1.svg', 'absolute top-[400px] right-[230px] w-[120px]'],
+    ], [
+        ['/images/game/grass3.svg', 'absolute top-[300px] right-[480px] w-[120px] scale-x-[-1]'],
+        ['/images/game/dino2.svg', 'absolute top-[200px] right-[230px] w-[270px] scale-x-[-1]'],
+        ['/images/game/grass3.svg', 'absolute top-[400px] right-[130px] w-[120px]'],
+    ], [
+        ['/images/game/cloud1.svg', 'absolute top-[300px] right-[480px] w-[180px] scale-x-[-1]'],
+        ['/images/game/dino7.svg', 'absolute top-[200px] right-[230px] w-[270px] scale-x-[-1]'],
+        ['/images/game/cloud1.svg', 'absolute top-[400px] right-[130px] w-[180px] scale-x-[-1]'],
+    ], [
+        ['/images/game/dino6.svg', 'absolute top-[200px] right-[230px] w-[270px] scale-x-[-1]'],
+    ],
+]
+
+function getRandomNumber(min, max, isInteger = false) {
+    const random = Math.random() * (max - min) + min;
+    return isInteger ? Math.floor(random) : random;
+}
+
 const route = express.Router();
 
 route.get('/', async (req, res) => {
+    const scene = scenes[getRandomNumber(0, scenes.length, true)]
     const dinos = await Dino.findAll()
     const users = await User.findAll()
-    res.render('dashboard/index', { dinos, users });
+    res.render('dashboard/index', { dinos, users, scene });
 })
 
 route.post('/dino/save', async (req, res) => {
