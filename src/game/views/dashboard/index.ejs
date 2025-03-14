@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+</head>
+
+<body>
+	<a href="/dashboard/database/sync">Sync database</a>
+	<form action="/dashboard/user/save" method="post">
+		<h1>User</h1>
+		<div><input type="text" name="name" placeholder="name" /></div>
+		<div><input type="text" name="lastname" placeholder="lastname" /></div>
+		<button type="submit">Salvar</button>
+	</form>
+	<hr>
+	<% locals.users?.forEach(dino => { %>
+	<div><%= dino.name %> <%= dino.lastname %></div>
+	<% }) %>
+	<hr>
+	<form action="/dashboard/dino/save" method="post">
+		<h1>Dino</h1>
+		<div><input type="text" name="name" placeholder="name" /></div>
+		<div><input type="text" name="scientific_name" placeholder="scientific_name" /></div>
+		<div><input type="text" name="period" placeholder="period" /></div>
+		<div><input type="text" name="diet" placeholder="diet" /></div>
+		<div><input type="number" name="width" placeholder="width" /></div>
+		<div><input type="number" name="height" placeholder="height" /></div>
+		<div><input type="number" name="weight" placeholder="weight" /></div>
+		<button type="submit">Salvar</button>
+	</form>
+	<hr>
+	<% locals.dinos?.forEach(dino => { %>
+	<div>
+		<%= dino.name %> - <%= dino.period %> <a href="/dashboard/dino/delete/<%= dino.id %>">delete</a>
+	</div>
+	<% }) %>
+</body>
+
+</html>

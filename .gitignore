@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### ENVIRONMENT ###
+.env
+
 ### STS ###
 .apt_generated
 .classpath
@@ -34,3 +37,6 @@ build/
 
 ### DATABASE CONFIGS ###
 src/main/resources/database.properties
+
+### Node ###
+node_modules
